@@ -7,12 +7,14 @@ public class SearchInsertPosition {
     }
 
     public static int searchInsert(int[] nums, int target) {
+        if (nums[0] > target) return 0;
+
         var start = 0;
         var end = nums.length - 1;
         var pos = 0;
 
         while (end >= start) {
-            var mid = start + (end - start) / 2;
+            final var mid = start + (end - start) / 2;
             if (nums[mid] == target) return mid;
             if (nums[mid] > target) {
                 end = mid - 1;
@@ -22,8 +24,6 @@ public class SearchInsertPosition {
             pos = mid;
         }
 
-        if (nums[pos] < target) return pos + 1;
-        if (nums[pos] > target && pos == 0) return 0;
-        return pos;
+        return (nums[pos] < target) ? pos + 1 : pos;
     }
 }
