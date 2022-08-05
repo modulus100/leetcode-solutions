@@ -13,7 +13,7 @@ public class BinarySearch {
 
     public int binSearch(int[] nums, int target, int startIndex, int endIndex) {
         if (startIndex > endIndex) return -1;
-        var pivot = (startIndex + endIndex) / 2;
+        var pivot = startIndex + (endIndex - startIndex) / 2;
 
         if (nums[pivot] == target) return pivot;
         if (nums[pivot] > target) return binSearch(nums, target, startIndex, pivot - 1);
